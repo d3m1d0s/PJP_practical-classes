@@ -169,7 +169,9 @@ public class GrammarOps {
     
                 for (Symbol s : rule.getRHS()) {
                     Set<String> fs = getFirst(s);
-                    result.addAll(fs);
+                    Set<String> withoutEpsilon = new HashSet<>(fs);
+                    withoutEpsilon.remove("{e}");
+                    result.addAll(withoutEpsilon);
                     if (!fs.contains("{e}")) {
                         nullable = false;
                         break;

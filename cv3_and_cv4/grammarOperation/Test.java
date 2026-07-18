@@ -32,6 +32,12 @@ public class Test {
 
         GrammarOps go = new GrammarOps(grammar);
 
+        Set<String> emptyNames = new LinkedHashSet<>();
+        for (Nonterminal nt : go.getEmptyNonterminals()) {
+            emptyNames.add(nt.getName());
+        }
+        System.out.println("\nEMPTY = " + emptyNames);
+
         // print FIRST set for each rule
         System.out.println("\nFIRST sets:");
         for (Rule r : grammar.getRules()) {
@@ -44,7 +50,9 @@ public class Test {
             boolean nullable = true;
             for (Symbol s : r.getRHS()) {
                 Set<String> fs = go.getFirst(s);
-                result.addAll(fs);
+                Set<String> withoutEpsilon = new LinkedHashSet<>(fs);
+                withoutEpsilon.remove("{e}");
+                result.addAll(withoutEpsilon);
                 if (!fs.contains("{e}")) {
                     nullable = false;
                     break;
