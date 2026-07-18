@@ -1,1 +1,12 @@
-/.vscode
+# build output
+target/
+out/
+*.class
+*.jar
+
+# editor settings
+.idea/
+.vscode/
+
+# ad-hoc archives
+*.zip
