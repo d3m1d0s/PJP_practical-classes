@@ -79,7 +79,10 @@ public class GrammarOps {
 
                 for (Symbol s : rhs) {
                     Set<String> fs = first.get(s);
-                    currentSet.addAll(fs);
+                    // add FIRST(s) without "{e}"; epsilon is added only when the whole RHS is nullable
+                    Set<String> withoutEpsilon = new HashSet<>(fs);
+                    withoutEpsilon.remove("{e}");
+                    currentSet.addAll(withoutEpsilon);
                     if (!fs.contains("{e}")) {
                         allNullable = false;
                         break;
