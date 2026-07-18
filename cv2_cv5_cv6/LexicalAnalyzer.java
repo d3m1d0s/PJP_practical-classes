@@ -23,7 +23,7 @@ public class LexicalAnalyzer {
             System.out.println(token);
         }
         */ 
-        // cv5: print applied grammar rule numbers (an older Parser.parse() returned them)
+        // cv5: print applied grammar rule numbers
         /*
         for (int i = 0; i < n; i++) {
             String line = scanner.nextLine();
@@ -31,8 +31,9 @@ public class LexicalAnalyzer {
             List<Token> tokens = lexer.tokenize();
 
             try {
-                Parser parser = new Parser(tokens);
-                List<Integer> ruleNumbers = parser.parse();
+                Parser parser = new Parser(tokens, false);
+                parser.parse();
+                List<Integer> ruleNumbers = parser.getRuleNumbers();
                 for (int num : ruleNumbers) {
                     System.out.print(num + " ");
                 }
