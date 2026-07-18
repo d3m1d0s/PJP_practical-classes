@@ -38,7 +38,10 @@ public class GrammarOps {
                 if (!emptyNonterminals.contains(lhs)) {
                     boolean emptyRule = true;
                     for (Symbol s : rule.getRHS()) {
-                        if (s instanceof Terminal || !emptyNonterminals.contains(s)) {
+                        // "{e}" is the epsilon terminal produced by GrammarReader
+                        boolean nullable = s.getName().equals("{e}")
+                                || (s instanceof Nonterminal && emptyNonterminals.contains(s));
+                        if (!nullable) {
                             emptyRule = false;
                             break;
                         }
