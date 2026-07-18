@@ -17,6 +17,6 @@ public class Nonterminal extends Symbol {
         rules.add(rule);
     }
 
-    private final List rules = new ArrayList();
+    private final List<Rule> rules = new ArrayList<>();
 }
 
