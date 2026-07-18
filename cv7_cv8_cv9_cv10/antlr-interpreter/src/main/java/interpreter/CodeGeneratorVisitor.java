@@ -54,12 +54,6 @@ public class CodeGeneratorVisitor extends LanguageBaseVisitor<Type> {
     public Type visitPrintExpr(PrintExprContext ctx) {
         Type exprType = visit(ctx.expr());
 
-        // load var if it's just a variable
-        if (ctx.expr() instanceof IdContext idCtx) {
-            String name = idCtx.IDENTIFIER().getText();
-            instructions.add(new Instruction(Instruction.OpCode.LOAD, name));
-        }
-        
         // then print
         if (exprType == Type.FLOAT) {
             instructions.add(new Instruction(Instruction.OpCode.PRINT_F));
