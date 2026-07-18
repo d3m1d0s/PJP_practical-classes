@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-// parsing an infix expression and converting it to postfix (RPN) - Reverse Polish Notation
+// converts an infix expression to postfix (reverse Polish notation)
 public class ExpressionParser {
     public static List<String> infixToPostfix(String expression) throws Exception {
         Stack<Character> operators = new Stack<>();

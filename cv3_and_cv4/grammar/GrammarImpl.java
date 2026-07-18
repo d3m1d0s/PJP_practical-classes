@@ -86,19 +86,10 @@ public class GrammarImpl implements Grammar {
         }
     }
 
-    /**
-     * List of terminal symbols.
-     */
     private final Map<String, Terminal> terminals = new TreeMap<String, Terminal>();
 
-    /**
-     * List of nonterminal symbols.
-     */
     private final Map<String, Nonterminal> nonterminals = new TreeMap<String, Nonterminal>();
 
-    /**
-     * Start nonterminal.
-     */
     private Nonterminal startNonterminal;
 }
 

@@ -54,7 +54,6 @@ public class CodeGeneratorVisitor extends LanguageBaseVisitor<Type> {
     public Type visitPrintExpr(PrintExprContext ctx) {
         Type exprType = visit(ctx.expr());
 
-        // then print
         if (exprType == Type.FLOAT) {
             instructions.add(new Instruction(Instruction.OpCode.PRINT_F));
         } else {
@@ -74,7 +73,7 @@ public class CodeGeneratorVisitor extends LanguageBaseVisitor<Type> {
         // save result and leave it on stack (for chained assigns)
         if (varType == Type.FLOAT || exprType == Type.FLOAT) {
             instructions.add(new Instruction(Instruction.OpCode.SAVE_F, name));
-            instructions.add(new Instruction(Instruction.OpCode.LOAD, name)); // важно: вернуть значение на стек
+            instructions.add(new Instruction(Instruction.OpCode.LOAD, name));
         } else {
             instructions.add(new Instruction(Instruction.OpCode.SAVE_I, name));
             instructions.add(new Instruction(Instruction.OpCode.LOAD, name));

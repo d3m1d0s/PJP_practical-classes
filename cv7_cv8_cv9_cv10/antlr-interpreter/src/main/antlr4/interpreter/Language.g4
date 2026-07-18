@@ -1,6 +1,5 @@
 grammar Language;
 
-/** The start rule; begin parsing here. */
 program: statement+ ;
 
 statement
@@ -35,4 +34,4 @@ SUB : '-' ;
 IDENTIFIER : [a-zA-Z]+ ; 
 FLOAT : [0-9]+'.'[0-9]+ ;
 INT : [0-9]+ ; 
-WS : [ \t\r\n]+ -> skip ; // toss out whitespace
+WS : [ \t\r\n]+ -> skip ;

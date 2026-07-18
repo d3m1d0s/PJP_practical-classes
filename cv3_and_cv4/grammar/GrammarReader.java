@@ -33,9 +33,8 @@ public final class GrammarReader {
                 sym = getSym();
                 Rule rule = new Rule(lhs);
             
-                // if we see ; or | immediately, then the rule is empty -> epsilon
+                // an empty alternative (nothing before ';' or '|'). epsilon is encoded as the synthetic terminal "{e}"
                 if (sym == ';' || sym == '|') {
-                    // empty right-hand side — {e}
                     Terminal epsilon = grammar.addTerminal("{e}");
                     rule.addSymbol(epsilon);
                     lhs.addRule(rule);

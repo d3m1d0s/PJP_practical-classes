@@ -7,7 +7,7 @@ public class LexicalAnalyzer {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
-        // cv 2
+        // cv2: print the token stream
         /*
         StringBuilder input = new StringBuilder();
         
@@ -23,7 +23,7 @@ public class LexicalAnalyzer {
             System.out.println(token);
         }
         */ 
-        // cv 5
+        // cv5: print applied grammar rule numbers (an older Parser.parse() returned them)
         /*
         for (int i = 0; i < n; i++) {
             String line = scanner.nextLine();
@@ -42,7 +42,7 @@ public class LexicalAnalyzer {
             }
         }
         */
-        // cv 6
+        // cv6: evaluate expressions
         for (int i = 0; i < n; i++) {
             String line = scanner.nextLine();
             Lexer lexer = new Lexer(line);

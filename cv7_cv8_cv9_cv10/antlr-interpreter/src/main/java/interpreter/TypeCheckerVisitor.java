@@ -59,7 +59,8 @@ public class TypeCheckerVisitor extends LanguageBaseVisitor<Type> {
             return Type.ERROR;
         }
 
-        return leftType; // = has right associativity
+        // assignment is an expression. returning the type enables chained assignments
+        return leftType;
     }
 
     @Override

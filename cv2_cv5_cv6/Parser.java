@@ -43,7 +43,7 @@ import java.util.*;
             int t = T();
             return E1(acc - t);
         } else {
-            return acc; // ε
+            return acc; // {e}
         }
     }
 
@@ -61,7 +61,7 @@ import java.util.*;
             if (f == 0) throw new ArithmeticException("Division by zero");
             return T1(acc / f);
         } else {
-            return acc; // ε
+            return acc; // {e}
         }
     }
 

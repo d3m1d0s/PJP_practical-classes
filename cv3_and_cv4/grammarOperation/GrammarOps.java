@@ -89,7 +89,6 @@ public class GrammarOps {
                     }
                 }
 
-                // if all symbols can be nullable -> add {e}
                 if (allNullable) currentSet.add("{e}");
 
 
@@ -143,7 +142,6 @@ public class GrammarOps {
         } while (changed);
     }
 
-    // methods to access FIRST and FOLLOW
     public Set<String> getFirst(Symbol s) {
         return first.getOrDefault(s, Set.of());
     }
@@ -181,7 +179,7 @@ public class GrammarOps {
                 firstSets.add(result);
             }
     
-            // compare FIRST sets pairwise
+            // LL(1): FIRST sets of the alternatives must be pairwise disjoint
             for (int i = 0; i < firstSets.size(); i++) {
                 for (int j = i + 1; j < firstSets.size(); j++) {
                     Set<String> intersection = new HashSet<>(firstSets.get(i));
@@ -190,14 +188,14 @@ public class GrammarOps {
                         return false;
                     }
     
-                    // if {e} is in i-th, FOLLOW(nt) && FIRST(j) must be empty
+                    // if the i-th alternative is nullable, FIRST(j) must not intersect FOLLOW(nt)
                     if (firstSets.get(i).contains("{e}")) {
                         Set<String> overlap = new HashSet<>(firstSets.get(j));
                         overlap.retainAll(getFollow(nt));
                         if (!overlap.isEmpty()) return false;
                     }
     
-                    // if {e} is in j-th, FOLLOW(nt) && FIRST(i) must be empty
+                    // if the j-th alternative is nullable, FIRST(i) must not intersect FOLLOW(nt)
                     if (firstSets.get(j).contains("{e}")) {
                         Set<String> overlap = new HashSet<>(firstSets.get(i));
                         overlap.retainAll(getFollow(nt));

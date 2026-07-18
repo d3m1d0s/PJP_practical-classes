@@ -21,7 +21,7 @@ public class ExpressionEvaluator {
                     case '-': stack.push(a - b); break;
                     case '*': stack.push(a * b); break;
                     case '/': 
-                        if (b == 0) throw new Exception("ERROR"); // division by zero
+                        if (b == 0) throw new Exception("ERROR");
                         stack.push(a / b); 
                         break;
                     default: throw new Exception("ERROR");

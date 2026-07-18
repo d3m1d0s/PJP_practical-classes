@@ -59,13 +59,8 @@ public class Main {
                 instructionStrings.add(inst.toString());
             }
 
-            //FOR TEST:
-            //instructionStrings = Files.readAllLines(Paths.get("input.txt"));
-
-            
-            // INTERPRETER (won't work without removed class):
-            // LanguageCustomVisitor executor = new LanguageCustomVisitor();
-            // executor.visit(tree);
+            // to run the stack machine on the reference listing instead:
+            // instructionStrings = Files.readAllLines(Paths.get("input.txt"));
 
             StackMachine machine = new StackMachine();
             machine.execute(instructionStrings);

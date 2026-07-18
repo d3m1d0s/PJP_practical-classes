@@ -13,7 +13,6 @@ public class Nonterminal extends Symbol {
     }
 
     void addRule(Rule rule) {
-        // assert rule.getLHS() == this;
         rules.add(rule);
     }
 
